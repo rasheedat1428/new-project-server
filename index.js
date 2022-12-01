@@ -32,4 +32,22 @@ const students = [
     return res.status(201).json(newStudentList);
   });
 
+  app.put("/students/:id", (req, res) => {
+    const studentId = req.params.id;
+    const student = students.find((s) => s.id.toString() === studentId);
+    if (student) {
+      const body = req.body;
+      const updateStudent = students.filter((f) => f.id.toString() !== studentId)
+      return res.status(200).json([...updateStudent, body]);
+    } else {
+      return res.status(400).json({message: "Student not Found"})
+    }
+    });
+    
+   app.delete("/students/:id", (req, res) => {
+    const studentId = req.params.id;
+    const deleteStudent = students.filter((f) => f.id.toString() !== studentId);
+    return res.status(200).json(deleteStudent);
+   });
+   
   app.listen(PORT, () => console.log(`server is listening on port ${PORT}`));
