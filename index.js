@@ -2,6 +2,7 @@ import express, { json } from "express";
 import  * as dotenv from "dotenv";
 import dbConfig from "./config/db.js";
 import studentRoute from "./router/studentRoute.js";
+import { errorHandler } from "./errors/errorTypes.js";
 
 dotenv.config();
 dbConfig();
@@ -13,4 +14,6 @@ const PORT = process.env.PORT || 6000;
 
 app.use("/students", studentRoute);
 
-  app.listen(PORT, () => console.log(`server is listening on port ${PORT}`));
+app.use(errorHandler);
+
+app.listen(PORT, () => console.log(`server is listening on port ${PORT}`));
