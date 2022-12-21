@@ -10,7 +10,7 @@ export const UserSchema = Schema ({
       role: {
         type: String,
         enum: ["admin", "user", "guest"],
-        required: true,
+        default: "user",
       },
       username: {
         type: String,
@@ -23,7 +23,9 @@ export const UserSchema = Schema ({
         type: String,
         required: true,
       },
-    });
+    },
+    { timestamps: true }
+    );
     
     const UserModel = mongoose.model("user", UserSchema);
     export default UserModel;
