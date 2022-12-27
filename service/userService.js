@@ -27,10 +27,10 @@ if (match) {
 });
 
 export const getUserProfileService = asyncHandler(async(username) => {
-    return await UserModel.findOne({username})
+    return await UserModel.findOne({username});
 });
 
 export const getAllUsersProfileService = asyncHandler(async() => {
-    return await UserModel.find()
+    return await UserModel.find();
 });
     
