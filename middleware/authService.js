@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-export const generateToken = async (payload, options = {expiresIn: 300000}) => {
+export const generateToken = async (payload, options = {expiresIn: 800000000000}) => {
     const token = await jwt.sign(payload, process.env.AUTH_SECRET_KEY, options);
     return token;
 };
