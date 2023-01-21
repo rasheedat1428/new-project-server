@@ -5,12 +5,14 @@ import studentRoute from "./router/studentRoute.js";
 import { errorHandler } from "./errors/errorTypes.js";
 import userRoute from "./router/userRoute.js";
 import taskRoute from "./router/taskRoute.js";
+import cors from "cors";
 
 dotenv.config();
 dbConfig();
 
 const app = express();
 app.use(json());
+app.use(cors());
 
 const PORT = process.env.PORT || 6000;
 
